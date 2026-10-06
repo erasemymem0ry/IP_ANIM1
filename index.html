@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимированное дерево</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            background: radial-gradient(ellipse at bottom,
+                        #7b5ea7 0%,
+                        #c8b6e2 55%,
+                        #f5eafc 100%);
+        }
+
+        .canvas {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            width: 100%;
+            max-width: 800px;
+            height: 700px;
+            padding-left: 200px; 
+            padding-bottom: 60px;
+        }
+
+        .trunk,
+        .branch {
+            border-radius: 20px;
+            background: linear-gradient(to right, #5c3a1e, #2e1a0a);
+        }
+
+        .trunk {
+            position: relative;
+            width: 14px;
+            height: 560px;
+            margin: 0;
+        }
+
+        .branch {
+            position: absolute;
+            width: 6px;
+            left: calc(50% - 3px);
+            transform-origin: bottom center;
+        }
+
+        .branch:nth-child(even) { transform: rotate(48deg); }
+        .branch:nth-child(odd)  { transform: rotate(-52deg); }
+
+        .branch:nth-child(1) { top: 210px; height: 200px; }
+        .branch:nth-child(2) { top: 175px; height: 170px; }
+        .branch:nth-child(3) { top: 130px; height: 150px; }
+        .branch:nth-child(4) { top:  95px; height: 135px; }
+        .branch:nth-child(5) { top:  60px; height: 115px; }
+        .branch:nth-child(6) { top:  35px; height:  95px; }
+
+        .leaf {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 100% 0 100% 0;
+            background: linear-gradient(135deg, #c084fc, #6d28d9);
+        }
+
+        .leaf:nth-child(1) { top: 10px; animation-delay: 3s;   }
+        .leaf:nth-child(2) { top: 30px; animation-delay: 2.5s; }
+        .leaf:nth-child(3) { top: 55px; animation-delay: 2s;   }
+
+        .leaf:nth-child(odd) {
+            left: 100%;
+            transform-origin: 0% 100%;
+            animation-name: leaf-odd-grow;
+            animation-duration: 3.5s;
+            animation-fill-mode: both;
+        }
+
+        .leaf:nth-child(even) {
+            left: -160%;
+            transform-origin: 50% 100%;
+            animation-name: leaf-even-grow;
+            animation-duration: 3.5s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes leaf-odd-grow {
+            0%   { transform: scale(0) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes leaf-even-grow {
+            0%   { transform: rotate(-90deg) scale(0); }
+            100% { transform: rotate(-90deg) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="tree">
+            <div class="trunk">
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+                <div class="branch">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
